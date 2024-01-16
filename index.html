@@ -23,7 +23,7 @@
     <div class="top_box">
         <div style="float: left;width: 35%;margin-left:0px"><img
                 src="images/logo_png.jpg"></div>
-        <div class="date_bar">2023年07月10日 星期一</div>
+        <div class="date_bar" id="date-date">2023年07月10日 星期一</div>
         <div class="member_box"></div>
         <div class="welcome_bar" style="width:470px">
 			<span>
@@ -131,4 +131,28 @@
     reserved.&nbsp;&nbsp;电子科技大学&nbsp;&amp;&nbsp;上海树维信息科技有限公司
 </div>
 </body>
+<script>
+    function format(t) {
+        return t < 10 ? '0' + t : t;
+    }
+
+    function getTimes(times) {
+        var date = new Date();
+        var year = date.getFullYear();
+        var month = format(date.getMonth() + 1);
+        var day = format(date.getDate());
+        var d = date.getDay();
+        var h = format(date.getHours());
+        var m = format(date.getMinutes());
+
+        var weekday = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+        var week = weekday[d];
+        var date_date = year.toString() + "年" + month.toString() + "月" + day.toString() + "日   " + week;
+        var date_time = year + '-' + month + '-' + day + ' ' + h + ':' + m
+        document.getElementById('date-date').innerHTML = date_date;
+        document.getElementById('date-time').innerHTML = date_time;
+    }
+
+    getTimes()
+</script>
 </html>
